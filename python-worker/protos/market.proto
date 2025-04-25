@@ -1,0 +1,26 @@
+// python-worker/protos/market.proto
+syntax = "proto3";
+
+service MarketService {
+  rpc PredictPrice (PriceRequest) returns (PriceResponse);
+  rpc DetectAnomaly (AnomalyRequest) returns (AnomalyResponse);
+}
+
+message PriceRequest {
+  string pair = 1;
+  repeated float features = 2;
+}
+
+message PriceResponse {
+  float price = 1;
+}
+
+message AnomalyRequest {
+  repeated float features = 1;
+}
+
+message AnomalyResponse {
+  bool is_anomaly = 1;
+  float score = 2;
+  float threshold = 3;
+}

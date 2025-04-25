@@ -1,0 +1,24 @@
+# python-worker/config/feature_config.yaml
+features:
+  - name: price
+    type: float
+    normalization: minmax
+    window_size: 60
+    importance: 1.0
+    
+  - name: volume
+    type: float
+    normalization: standard
+    window_size: 30
+    importance: 0.7
+    
+  - name: rsi
+    type: float
+    normalization: none
+    window_size: 14
+    importance: 0.5
+    
+model:
+  lookback: 60
+  target: price
+  test_size: 0.2

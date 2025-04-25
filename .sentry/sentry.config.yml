@@ -1,0 +1,20 @@
+# .sentry/sentry.config.yml
+alerts:
+  # High priority errors
+  - name: "Critical API Errors"
+    conditions:
+      - "event.type:error level:error"
+      - "environment:production"
+    actions:
+      - "opsgenie:critical"
+    frequency: 1
+    threshold: 5 # Trigger after 5 occurrences
+
+  # Performance degradation
+  - name: "Slow Database Queries"
+    conditions:
+      - "event.type:transaction transaction:/api/*"
+      - "duration:>2s"
+    actions:
+      - "slack:#alerts"
+    frequency: 15

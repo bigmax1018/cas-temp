@@ -1,0 +1,10 @@
+# python-worker/models/metadata/model_version.json
+{
+  "version": "1.0.0",
+  "training_date": "2023-10-01T12:00:00Z",
+  "input_shape": [60, 1],
+  "performance": {
+    "test_loss": 0.0025,
+    "test_accuracy": 0.92
+  }
+}

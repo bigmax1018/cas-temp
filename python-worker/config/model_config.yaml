@@ -1,0 +1,29 @@
+# python-worker/config/model_config.yaml
+training:
+  default:
+    epochs: 100
+    batch_size: 64
+    validation_split: 0.2
+    early_stopping:
+      patience: 10
+      min_delta: 0.001
+
+lstm:
+  layers:
+    - type: LSTM
+      units: 128
+      return_sequences: true
+      dropout: 0.2
+    - type: LSTM
+      units: 64
+      dropout: 0.2
+    - type: Dense
+      units: 1
+
+features:
+  base: [open, high, low, close, volume]
+  derived:
+    - log_returns
+    - volatility
+    - rsi_14
+    - macd
